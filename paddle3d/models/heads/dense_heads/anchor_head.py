@@ -228,7 +228,8 @@ class AnchorHeadSingle(nn.Layer):
 
         pos_normalizer = positives.sum(1, keepdim=True)
         reg_weights /= paddle.clip(pos_normalizer, min=1.0)
-        cls_weights /= paddle.clip(pos_normalizer, min=1.0).cast(cls_weights.dtype)
+        cls_weights /= paddle.clip(
+            pos_normalizer, min=1.0).cast(cls_weights.dtype)
         cls_targets = box_cls_labels * cared.cast(box_cls_labels.dtype)
 
         one_hot_targets = []
