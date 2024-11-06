@@ -40,9 +40,6 @@ class HardVoxelizer(nn.Layer):
         voxels, coors, num_points_per_voxel, voxels_num = voxelize.hard_voxelize(
             point, self.voxel_size, self.point_cloud_range,
             self.max_num_points_in_voxel, max_num_voxels)
-        voxels = voxels[0:voxels_num, :, :]
-        coors = coors[0:voxels_num, :]
-        num_points_per_voxel = num_points_per_voxel[0:voxels_num]
 
         # bs_idx = paddle.full(
         #     shape=voxels_num, fill_value=bs_idx, dtype=coors.dtype)
